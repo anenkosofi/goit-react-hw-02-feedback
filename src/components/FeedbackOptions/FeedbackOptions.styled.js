@@ -3,6 +3,15 @@ import styled from 'styled-components';
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
+
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    margin: 0 auto;
+  }
 `;
 
 const Button = styled.button`
