@@ -20,6 +20,7 @@ const Button = styled.button`
   width: 140px;
 
   font-size: 22px;
+  text-transform: capitalize;
 
   color: #ffffff;
   background: linear-gradient(#fe3b5a, #fd7914);
@@ -33,7 +34,7 @@ const Button = styled.button`
   :hover,
   :focus {
     animation: pulse 1s;
-    box-shadow: 0 0 0 50px transparent;
+    box-shadow: 0 0 0 30px transparent;
   }
 
   @keyframes pulse {

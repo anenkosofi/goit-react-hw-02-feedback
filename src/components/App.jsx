@@ -1,9 +1,10 @@
 import React from 'react';
 import { GlobalStyle } from './GlobalStyle';
-import { Section } from './Section/Section';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Statistics } from './Statistics/Statistics';
-import { Notification } from './Notification/Notification';
+import { Box } from './Box';
+import { Section } from './Section';
+import { FeedbackOptions } from './FeedbackOptions';
+import { Statistics } from './Statistics';
+import { Notification } from './Notification';
 
 export class App extends React.Component {
   state = {
@@ -13,18 +14,9 @@ export class App extends React.Component {
   };
 
   leaveFeedback = option => {
-    switch (option) {
-      case 'good':
-        this.setState(prevState => ({ good: prevState[option] + 1 }));
-        break;
-      case 'neutral':
-        this.setState(prevState => ({ neutral: prevState[option] + 1 }));
-        break;
-      case 'bad':
-        this.setState(prevState => ({ bad: prevState[option] + 1 }));
-        break;
-      default:
-    }
+    this.setState({
+      [option]: this.state[option] + 1,
+    });
   };
 
   countTotalFeedback = () => {
@@ -40,23 +32,11 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: 30,
-          paddingTop: 40,
-          paddingBottom: 40,
-          fontSize: 32,
-          color: '#010101',
-        }}
-      >
+      <Box>
         <GlobalStyle />
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.leaveFeedback}
           />
         </Section>
@@ -73,7 +53,7 @@ export class App extends React.Component {
             <Notification message="There is no feedback"></Notification>
           )}
         </Section>
-      </div>
+      </Box>
     );
   }
 }
